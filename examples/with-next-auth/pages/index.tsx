@@ -1,8 +1,8 @@
-import "@farcaster/auth-kit/styles.css";
+import "@fc-auth/react/styles.css";
 
 import Head from "next/head";
 import { useSession, signIn, signOut, getCsrfToken } from "next-auth/react";
-import { SignInButton, AuthKitProvider, createConfig, SignInReturnType } from "@farcaster/auth-kit";
+import { SignInButton, AuthKitProvider, createConfig, SignInReturnType } from "@fc-auth/react";
 import { useCallback, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

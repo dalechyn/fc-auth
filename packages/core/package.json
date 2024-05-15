@@ -1,7 +1,7 @@
 {
-  "name": "@farcaster/auth-client",
+  "name": "@fc-auth/core",
   "description": "A framework agnostic client library for Farcaster Auth.",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -72,7 +72,7 @@
     }
   },
   "dependencies": {
-    "@farcaster/relay": "workspace:*",
+    "@fc-auth/relay": "workspace:*",
     "ethers": "^6.11.1",
     "neverthrow": "^6.1.0",
     "siwe": "^2.1.4"

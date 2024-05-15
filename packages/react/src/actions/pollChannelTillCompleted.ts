@@ -2,7 +2,7 @@ import {
   AuthClientError,
   type PollChannelTillCompletedParameters as client_PollChannelTilCompletedParameters,
   type PollChannelTillCompletedReturnType as client_PollChannelTilCompletedReturnType,
-} from "@farcaster/auth-client";
+} from "@fc-auth/core";
 import { type Config } from "../types/config.js";
 
 export type PollChannelTillCompletedParameters = client_PollChannelTilCompletedParameters;

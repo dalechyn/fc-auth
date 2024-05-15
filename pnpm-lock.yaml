@@ -120,7 +120,7 @@ importers:
       '@expo/metro-runtime':
         specifier: ~3.1.3
         version: 3.1.3(react-native@0.73.6)
-      '@farcaster/auth-kit':
+      '@fc-auth/react':
         specifier: workspace:*
         version: link:../../packages/react
       expo:
@@ -154,7 +154,7 @@ importers:
 
   examples/frontend-only:
     dependencies:
-      '@farcaster/auth-kit':
+      '@fc-auth/react':
         specifier: workspace:*
         version: link:../../packages/react
       '@tanstack/react-query':
@@ -209,7 +209,7 @@ importers:
 
   examples/with-next-auth:
     dependencies:
-      '@farcaster/auth-kit':
+      '@fc-auth/react':
         specifier: workspace:*
         version: link:../../packages/react
       '@tanstack/react-query':
@@ -252,7 +252,7 @@ importers:
 
   packages/core:
     dependencies:
-      '@farcaster/relay':
+      '@fc-auth/relay':
         specifier: workspace:*
         version: link:../../apps/relay
       ethers:
@@ -271,7 +271,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@farcaster/auth-client':
+      '@fc-auth/core':
         specifier: workspace:*
         version: link:../core
       '@vanilla-extract/css':

@@ -21,7 +21,7 @@ export default defineConfig({
       },
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime", "react-dom", "@farcaster/auth-client", "@tanstack/react-query"],
+      external: ["react", "react/jsx-runtime", "react-dom", "@fc-auth/core", "@tanstack/react-query"],
     },
   },
 });

@@ -17,7 +17,7 @@ WORKDIR /home/node/app
 COPY --chown=node:node ./package.json ./package.json
 RUN pnpm global add turbo@$(node -e "console.log(require('./package.json').devDependencies.turbo)")
 COPY --chown=node:node . .
-RUN pnpm turbo prune --scope=@farcaster/auth-relay --docker
+RUN pnpm turbo prune --scope=@fc-auth/relay --docker
 
 ###############################################################################
 ############## Stage 2: Build the code using a full node image ################

@@ -3,7 +3,7 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "dependsOn": ["@farcaster/auth-client#build"],
+      "dependsOn": ["@fc-auth/core#build"],
       "inputs": ["src/**", "vite.config.ts", "tsconfig.json", "tsconfig.node.json"],
       "outputs": ["dist/**"]
     }

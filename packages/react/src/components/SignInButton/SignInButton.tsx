@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AuthClientError, type PollChannelTillCompletedReturnType } from "@farcaster/auth-client";
+import { AuthClientError, type PollChannelTillCompletedReturnType } from "@fc-auth/core";
 import useSignIn from "../../hooks/useSignIn.js";
 import { ActionButton } from "../ActionButton/index.js";
 import { ProfileButton } from "../ProfileButton/index.js";

@@ -2,7 +2,7 @@ import {
   AuthClientError,
   type VerifySiweMessageParameters as client_VerifySiweMessageParameters,
   type VerifySiweMessageReturnType as client_VerifySiweMessageReturnType,
-} from "@farcaster/auth-client";
+} from "@fc-auth/core";
 import { type Config } from "../types/config.js";
 
 export type VerifySiweMessageParameters = client_VerifySiweMessageParameters;

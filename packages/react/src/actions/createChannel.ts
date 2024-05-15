@@ -2,7 +2,7 @@ import {
   AuthClientError,
   type CreateChannelParameters as client_CreateChannelParameters,
   type CreateChannelReturnType as client_CreateChannelReturnType,
-} from "@farcaster/auth-client";
+} from "@fc-auth/core";
 import { type Config } from "../types/config.js";
 import type { Omit } from "../types/utils.js";
 

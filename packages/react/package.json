@@ -1,7 +1,7 @@
 {
-  "name": "@farcaster/auth-kit",
+  "name": "@fc-auth/react",
   "description": "A React library that makes it easy to add Sign In With Farcaster to your application.",
-  "version": "0.2.1",
+  "version": "0.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "./styles.css": "./dist/style.css"
   },
   "dependencies": {
-    "@farcaster/auth-client": "workspace:*",
+    "@fc-auth/core": "workspace:*",
     "@vanilla-extract/css": "^1.14.1",
     "qrcode": "^1.5.3",
     "react-remove-scroll": "^2.5.9",

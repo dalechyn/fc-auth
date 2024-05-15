@@ -1,6 +1,6 @@
 import { JsonRpcProvider } from "ethers";
-import "@farcaster/auth-kit/styles.css";
-import { AuthKitProvider, createConfig, SignInButton, useProfile } from "@farcaster/auth-kit";
+import "@fc-auth/react/styles.css";
+import { AuthKitProvider, createConfig, SignInButton, useProfile } from "@fc-auth/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();

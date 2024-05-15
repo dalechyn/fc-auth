@@ -1,4 +1,4 @@
-import { createAppClient, viemConnector } from "@farcaster/auth-client";
+import { createAppClient, viemConnector } from "@fc-auth/core";
 import { type Config } from "../../types/config.js";
 
 const domainDefaults =

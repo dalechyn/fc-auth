@@ -2,7 +2,7 @@ import {
   AuthClientError,
   type PollChannelTillCompletedReturnType,
   type PollChannelTillCompletedParameters,
-} from "@farcaster/auth-client";
+} from "@fc-auth/core";
 import { type Config } from "../types/config.js";
 import { type Omit } from "../types/utils.js";
 

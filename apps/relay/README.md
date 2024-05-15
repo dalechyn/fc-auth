@@ -1,4 +1,4 @@
-# `@farcaster/relay`
+# `@fc-auth/relay`
 
 Farcaster Auth HTTP relay server.
 
@@ -26,6 +26,6 @@ pnpm start
 
 The Farcaster Auth relay server connects apps and wallets over a temporary stateful channel. Channel sessions are stored in Redis and expire after 1 hour.
 
-Anyone can run their own relay server and connect to it using the `@farcaster/auth-client` client. Merkle operates and maintains the `relay.farcaster.xyz` server used by Warpcast and available to the public.
+Anyone can run their own relay server and connect to it using the `@fc-auth/core` client. Merkle operates and maintains the `relay.farcaster.xyz` server used by Warpcast and available to the public.
 
-You don't need to run a relay server to use Farcaster Auth. If you just want to sign in a user to your app, look at the [`@farcaster/auth-kit`](../../packages/auth-kit/) and [`@farcaster/auth-client`](../../packages/auth-client/) packages.
+You don't need to run a relay server to use Farcaster Auth. If you just want to sign in a user to your app, look at the [`@fc-auth/react`](../../packages/react/) and [`@fc-auth/core`](../../packages/core/) packages.

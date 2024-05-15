@@ -3,7 +3,7 @@ import 'fastestsmallesttextencoderdecoder';
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Linking } from 'react-native';
-import { AuthKitProvider, useSignIn } from '@farcaster/auth-kit';
+import { AuthKitProvider, useSignIn } from '@fc-auth/react';
 import { useEffect, useCallback } from 'react';
 
 const config = {

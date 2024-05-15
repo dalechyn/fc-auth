@@ -1,6 +1,6 @@
 "use client";
 
-import { type PollChannelTillCompletedReturnType } from "@farcaster/auth-client";
+import { type PollChannelTillCompletedReturnType } from "@fc-auth/core";
 import { create } from "zustand";
 
 export type Profile = Pick<

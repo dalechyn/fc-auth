@@ -1,4 +1,4 @@
-import { type AppClient } from "@farcaster/auth-client";
+import { type AppClient } from "@fc-auth/core";
 import { type Provider } from "ethers";
 
 export interface Config {

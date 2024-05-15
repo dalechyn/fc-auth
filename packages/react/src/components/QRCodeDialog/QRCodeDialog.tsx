@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthClientError } from "@farcaster/auth-client";
+import { AuthClientError } from "@fc-auth/core";
 import { Dialog } from "../Dialog/index.js";
 import { body, siwfHeading, instructions } from "./QRCodeDialog.css.js";
 import { Button } from "../Button.js";
