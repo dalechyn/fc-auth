@@ -56,6 +56,9 @@ importers:
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@swc/core@1.4.8)(ts-node@10.9.2)(typescript@5.4.3)
+      tsx:
+        specifier: ^4.7.1
+        version: 4.7.1
       turbo:
         specifier: ^1.13.0
         version: 1.13.0
