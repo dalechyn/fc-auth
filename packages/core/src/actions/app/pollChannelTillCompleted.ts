@@ -2,7 +2,7 @@ import { AuthClientError } from "../../errors.js";
 import { type Client } from "../../clients/createClient.js";
 import { poll } from "../../clients/transports/http.js";
 import { type ChannelReturnType } from "./channel.js";
-import type { CompletedChannel } from "@farcaster/relay";
+import type { CompletedChannel } from "@fc-auth/relay";
 
 export type PollChannelTillCompletedParameters = {
   channelToken: string;

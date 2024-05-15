@@ -1,6 +1,6 @@
 import { type Client } from "../../clients/createClient.js";
 import { get } from "../../clients/transports/http.js";
-import { type ChannelGetReturnType } from "@farcaster/relay";
+import { type ChannelGetReturnType } from "@fc-auth/relay";
 
 export type ChannelParameters = {
   channelToken: string;

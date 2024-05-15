@@ -1,4 +1,4 @@
-import { type ChannelCreateParameters, type ChannelCreateReturnType } from "@farcaster/relay";
+import { type ChannelCreateParameters, type ChannelCreateReturnType } from "@fc-auth/relay";
 import { type Client } from "../../clients/createClient.js";
 import { post } from "../../clients/transports/http.js";
 
