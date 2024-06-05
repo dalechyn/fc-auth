@@ -1,5 +1,12 @@
 # authkit-expo-demo
 
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`bb8c782`](https://github.com/dalechyn/fc-auth/commit/bb8c782ddf1bd30dbf15f2650f9de84a2b2d43a3)]:
+  - @fc-auth/react@0.0.3
+
 ## 1.0.2
 
 ### Patch Changes
