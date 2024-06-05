@@ -1,37 +1,47 @@
-"use client";
+'use client'
 
-import { type MouseEventHandler, type ReactNode, useCallback, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { RemoveScroll } from "react-remove-scroll";
-import * as styles from "./Dialog.css.js";
-import { FocusTrap } from "./FocusTrap.js";
-import { isMobile } from "../../utils.js";
+import {
+  type MouseEventHandler,
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
+import { createPortal } from 'react-dom'
+import { RemoveScroll } from 'react-remove-scroll'
+import { isMobile } from '../../utils.js'
+import * as styles from './Dialog.css.js'
+import { FocusTrap } from './FocusTrap.js'
 
-const stopPropagation: MouseEventHandler<unknown> = (event) => event.stopPropagation();
+const stopPropagation: MouseEventHandler<unknown> = (event) =>
+  event.stopPropagation()
 
 interface DialogProps {
-  open: boolean;
-  onClose: () => void;
-  titleId: string;
-  onMountAutoFocus?: (event: Event) => void;
-  children: ReactNode;
+  open: boolean
+  onClose: () => void
+  titleId: string
+  onMountAutoFocus?: (event: Event) => void
+  children: ReactNode
 }
 
 export function Dialog({ children, onClose, open, titleId }: DialogProps) {
   useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => open && event.key === "Escape" && onClose();
+    const handleEscape = (event: KeyboardEvent) =>
+      open && event.key === 'Escape' && onClose()
 
-    document.addEventListener("keydown", handleEscape);
+    document.addEventListener('keydown', handleEscape)
 
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [open, onClose]);
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [open, onClose])
 
-  const [bodyScrollable, setBodyScrollable] = useState(true);
+  const [bodyScrollable, setBodyScrollable] = useState(true)
   useEffect(() => {
-    setBodyScrollable(getComputedStyle(window.document.body).overflow !== "hidden");
-  }, []);
+    setBodyScrollable(
+      getComputedStyle(window.document.body).overflow !== 'hidden',
+    )
+  }, [])
 
-  const handleBackdropClick = useCallback(() => onClose(), [onClose]);
+  const handleBackdropClick = useCallback(() => onClose(), [onClose])
 
   return (
     <>
@@ -40,8 +50,8 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
             <RemoveScroll enabled={bodyScrollable}>
               <div
                 style={{
-                  alignItems: isMobile() ? "flex-end" : "center",
-                  position: "fixed",
+                  alignItems: isMobile() ? 'flex-end' : 'center',
+                  position: 'fixed',
                 }}
                 aria-labelledby={titleId}
                 aria-modal
@@ -49,7 +59,11 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
                 onClick={handleBackdropClick}
                 role="dialog"
               >
-                <FocusTrap className={styles.content} onClick={stopPropagation} role="document">
+                <FocusTrap
+                  className={styles.content}
+                  onClick={stopPropagation}
+                  role="document"
+                >
                   {children}
                 </FocusTrap>
               </div>
@@ -58,5 +72,5 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
           )
         : null}
     </>
-  );
+  )
 }

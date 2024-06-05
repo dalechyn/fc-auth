@@ -1,38 +1,41 @@
 interface AuthClientErrorOpts {
-  message: string;
-  cause: Error | AuthClientError;
-  presentable: boolean;
+  message: string
+  cause: Error | AuthClientError
+  presentable: boolean
 }
 
 export class AuthClientError extends Error {
-  public readonly errCode: AuthClientErrorCode;
+  public readonly errCode: AuthClientErrorCode
 
   /* Indicates if error message can be presented to the user */
-  public readonly presentable: boolean = false;
+  public readonly presentable: boolean = false
 
   /**
    * @param errCode - the AuthClientError code for this message
    * @param context - a message, another Error, or a AuthClientErrorOpts
    */
-  constructor(errCode: AuthClientErrorCode, context: Partial<AuthClientErrorOpts> | string | Error) {
-    let parsedContext: string | Error | Partial<AuthClientErrorOpts>;
+  constructor(
+    errCode: AuthClientErrorCode,
+    context: Partial<AuthClientErrorOpts> | string | Error,
+  ) {
+    let parsedContext: string | Error | Partial<AuthClientErrorOpts>
 
-    if (typeof context === "string") {
-      parsedContext = { message: context };
+    if (typeof context === 'string') {
+      parsedContext = { message: context }
     } else if (context instanceof Error) {
-      parsedContext = { cause: context, message: context.message };
+      parsedContext = { cause: context, message: context.message }
     } else {
-      parsedContext = context;
+      parsedContext = context
     }
 
     if (!parsedContext.message) {
-      parsedContext.message = parsedContext.cause?.message || "";
+      parsedContext.message = parsedContext.cause?.message || ''
     }
 
-    super(parsedContext.message, { cause: parsedContext.cause });
+    super(parsedContext.message, { cause: parsedContext.cause })
 
-    this.name = "AuthClientError";
-    this.errCode = errCode;
+    this.name = 'AuthClientError'
+    this.errCode = errCode
   }
 }
 
@@ -45,17 +48,17 @@ export class AuthClientError extends Error {
  */
 export type AuthClientErrorCode =
   /* The request did not have valid authentication credentials, retry with credentials  */
-  | "unauthenticated"
+  | 'unauthenticated'
   /* The authenticated request did not have the authority to perform this action  */
-  | "unauthorized"
+  | 'unauthorized'
   /* The request cannot be completed as constructed, do not retry */
-  | "bad_request"
-  | "bad_request.validation_failure"
+  | 'bad_request'
+  | 'bad_request.validation_failure'
   /* The requested resource could not be found */
-  | "not_found"
+  | 'not_found'
   /* The request could not be completed because the operation is not executable */
-  | "not_implemented"
+  | 'not_implemented'
   /* The request could not be completed, it may or may not be safe to retry */
-  | "unavailable"
+  | 'unavailable'
   /* An unknown error was encountered */
-  | "unknown";
+  | 'unknown'

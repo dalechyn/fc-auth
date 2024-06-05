@@ -1,18 +1,18 @@
-import { AuthClientError } from "../../errors.js";
-import { type Client } from "../../clients/createClient.js";
-import { poll } from "../../clients/transports/http.js";
-import { type ChannelReturnType } from "./channel.js";
-import type { CompletedChannel } from "@fc-auth/relay";
+import type { CompletedChannel } from '@fc-auth/relay'
+import type { Client } from '../../clients/createClient.js'
+import { poll } from '../../clients/transports/http.js'
+import { AuthClientError } from '../../errors.js'
+import type { ChannelReturnType } from './channel.js'
 
 export type PollChannelTillCompletedParameters = {
-  channelToken: string;
-  timeout?: number;
-  interval?: number;
-};
+  channelToken: string
+  timeout?: number
+  interval?: number
+}
 
-export type PollChannelTillCompletedReturnType = CompletedChannel;
+export type PollChannelTillCompletedReturnType = CompletedChannel
 
-const path = "channel/status";
+const path = 'channel/status'
 
 export const pollChannelTillCompleted = async (
   client: Client,
@@ -27,12 +27,15 @@ export const pollChannelTillCompleted = async (
     },
     { channelToken: args.channelToken },
   )) {
-    if (polledData.state === "completed") {
+    if (polledData.state === 'completed') {
       // type coercing to completed as if the response status is 200
       // it is expected to have a completed status.
-      return polledData;
+      return polledData
     }
   }
   // This error should not be thrown, as the `poll` function will throw an error on timeout
-  throw new AuthClientError("unknown", "unexpected error in `pollChannelTillCompleted`");
-};
+  throw new AuthClientError(
+    'unknown',
+    'unexpected error in `pollChannelTillCompleted`',
+  )
+}

@@ -1,15 +1,19 @@
-import { type Client } from "../../clients/createClient.js";
+import type { Provider } from 'ethers'
+import type { Client } from '../../clients/createClient.js'
+import type { Omit } from '../../types/utils.js'
 import {
-  type VerifySiweMessageWithVerifierReturnType,
   type VerifySiweMessageWithVerifierParameters,
+  type VerifySiweMessageWithVerifierReturnType,
   verifySiweMessageWithVerifier as util_verifySiweMessage,
-} from "../../utils/verifySiweMessageWithVerifier.js";
-import type { Omit } from "../../types/utils.js";
-import type { Provider } from "ethers";
+} from '../../utils/verifySiweMessageWithVerifier.js'
 
-export type VerifySiweMessageParameters = Omit<VerifySiweMessageWithVerifierParameters, "verifier">;
+export type VerifySiweMessageParameters = Omit<
+  VerifySiweMessageWithVerifierParameters,
+  'verifier'
+>
 
-export type VerifySiweMessageReturnType = VerifySiweMessageWithVerifierReturnType;
+export type VerifySiweMessageReturnType =
+  VerifySiweMessageWithVerifierReturnType
 
 export const verifySiweMessage = (
   client: Client,
@@ -25,5 +29,5 @@ export const verifySiweMessage = (
       getFid: client.ethereum.getFid,
       provider: provider,
     },
-  });
-};
+  })
+}

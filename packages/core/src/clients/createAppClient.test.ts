@@ -1,38 +1,38 @@
-import { createAppClient, type AppClient } from "./createAppClient.js";
-import { viemConnector } from "./ethereum/viemConnector.js";
+import { type AppClient, createAppClient } from './createAppClient.js'
+import { viemConnector } from './ethereum/viemConnector.js'
 
-describe("createAppClient", () => {
+describe('createAppClient', () => {
   const config = {
     ethereum: viemConnector(),
-  };
+  }
 
-  let appClient: AppClient;
+  let appClient: AppClient
 
   beforeEach(() => {
-    appClient = createAppClient(config);
-  });
+    appClient = createAppClient(config)
+  })
 
-  test("adds version to config", () => {
+  test('adds version to config', () => {
     expect(appClient.config).toEqual({
-      relay: "https://relay.farcaster.xyz",
-      version: "v1",
-    });
-  });
+      relay: 'https://relay.farcaster.xyz',
+      version: 'v1',
+    })
+  })
 
-  test("overrides version", () => {
+  test('overrides version', () => {
     appClient = createAppClient({
       ...config,
-      version: "v2",
-    });
+      version: 'v2',
+    })
 
     expect(appClient.config).toEqual({
-      relay: "https://relay.farcaster.xyz",
-      version: "v2",
-    });
-  });
+      relay: 'https://relay.farcaster.xyz',
+      version: 'v2',
+    })
+  })
 
-  test("includes app actions", () => {
-    expect(appClient.createChannel).toBeDefined();
-    expect(appClient.status).toBeDefined();
-  });
-});
+  test('includes app actions', () => {
+    expect(appClient.createChannel).toBeDefined()
+    expect(appClient.status).toBeDefined()
+  })
+})

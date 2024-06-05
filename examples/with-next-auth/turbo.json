@@ -4,7 +4,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["@fc-auth/core#build"],
-      "inputs": ["src/**", "vite.config.ts", "tsconfig.json", "tsconfig.node.json", "next.config.js"],
+      "inputs": [
+        "src/**",
+        "vite.config.ts",
+        "tsconfig.json",
+        "tsconfig.node.json",
+        "next.config.js"
+      ],
       "outputs": ["dist/**"]
     }
   }

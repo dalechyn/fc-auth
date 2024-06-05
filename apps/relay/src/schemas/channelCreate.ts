@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const channelCreateSchema = z.object({
   siweUri: z.string().url(),
@@ -8,6 +8,6 @@ export const channelCreateSchema = z.object({
   expirationTime: z.string().optional(),
   requestId: z.string().optional(),
   redirectUrl: z.string().optional(),
-});
+})
 
-export type ChannelCreateParameters = z.infer<typeof channelCreateSchema>;
+export type ChannelCreateParameters = z.infer<typeof channelCreateSchema>

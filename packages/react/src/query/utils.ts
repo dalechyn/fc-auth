@@ -1,5 +1,7 @@
 // Modified from https://github.com/wevm/wagmi/blob/7e60b5e50abe5a89bdbac0cdd78d8327178d0021/packages/core/src/query/utils.ts
-export function filterQueryOptions<type extends Record<string, unknown>>(options: type): type {
+export function filterQueryOptions<type extends Record<string, unknown>>(
+  options: type,
+): type {
   // destructuring is super fast
   // biome-ignore format: no formatting
   const {
@@ -15,5 +17,5 @@ export function filterQueryOptions<type extends Record<string, unknown>>(options
     ...rest
   } = options
 
-  return rest as type;
+  return rest as type
 }

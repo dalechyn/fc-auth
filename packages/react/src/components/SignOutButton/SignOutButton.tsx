@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { secondaryButton } from "../styles.css.js";
-import { signOutButtonContainer, signOutIcon } from "./SignOutButton.css.js";
+import { secondaryButton } from '../styles.css.js'
+import { signOutButtonContainer, signOutIcon } from './SignOutButton.css.js'
 
 export function SignOutButton({ signOut }: { signOut?: () => void }) {
   return (
@@ -10,7 +10,7 @@ export function SignOutButton({ signOut }: { signOut?: () => void }) {
         type="button"
         className={secondaryButton}
         style={{
-          boxShadow: "0px 6px 12px 0 rgba(0,0,0,0.12)",
+          boxShadow: '0px 6px 12px 0 rgba(0,0,0,0.12)',
         }}
         onClick={signOut}
       >
@@ -34,7 +34,7 @@ export function SignOutButton({ signOut }: { signOut?: () => void }) {
         Sign out
       </button>
     </div>
-  );
+  )
 }
 
-export default SignOutButton;
+export default SignOutButton

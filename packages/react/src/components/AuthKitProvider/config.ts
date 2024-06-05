@@ -1,29 +1,29 @@
-import { createAppClient, viemConnector } from "@fc-auth/core";
-import { type Config } from "../../types/config.js";
+import { createAppClient, viemConnector } from '@fc-auth/core'
+import type { Config } from '../../types/config.js'
 
 const domainDefaults =
-  typeof window !== "undefined" && window?.location
+  typeof window !== 'undefined' && window?.location
     ? {
         domain: window.location.host,
         siweUri: window.location.href,
       }
-    : {};
+    : {}
 
 const configDefaults = {
-  relay: "https://relay.farcaster.xyz",
-  version: "v1",
+  relay: 'https://relay.farcaster.xyz',
+  version: 'v1',
   ...domainDefaults,
-};
+}
 
-export function createConfig(config: Omit<Config, "appClient">): Config {
+export function createConfig(config: Omit<Config, 'appClient'>): Config {
   const authKitConfig = {
     ...configDefaults,
     ...config,
-  };
+  }
 
-  const { relay, rpcUrl, version, provider } = authKitConfig;
+  const { relay, rpcUrl, version, provider } = authKitConfig
 
-  const ethereum = viemConnector(rpcUrl ? { rpcUrl } : undefined);
+  const ethereum = viemConnector(rpcUrl ? { rpcUrl } : undefined)
   const appClient = createAppClient(
     {
       relay,
@@ -31,6 +31,6 @@ export function createConfig(config: Omit<Config, "appClient">): Config {
       version,
     },
     provider,
-  );
-  return { ...authKitConfig, appClient };
+  )
+  return { ...authKitConfig, appClient }
 }

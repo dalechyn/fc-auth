@@ -1,38 +1,38 @@
-"use client";
+'use client'
 
-import useProfile from "../../hooks/useProfile.js";
-import { SignInButton } from "../SignInButton/index.js";
-import { AuthKitProvider, createConfig } from "../AuthKitProvider/index.js";
+import useProfile from '../../hooks/useProfile.js'
+import { AuthKitProvider, createConfig } from '../AuthKitProvider/index.js'
+import { SignInButton } from '../SignInButton/index.js'
 
 export function Demo() {
   const config = createConfig({
-    rpcUrl: "https://mainnet.optimism.io",
-    siweUri: "https://example.com/login",
-    domain: "example.com",
-  });
+    rpcUrl: 'https://mainnet.optimism.io',
+    siweUri: 'https://example.com/login',
+    domain: 'example.com',
+  })
 
   return (
     <AuthKitProvider config={config}>
-      <div style={{ position: "fixed", top: 12, right: 12, zIndex: 1000 }}>
+      <div style={{ position: 'fixed', top: 12, right: 12, zIndex: 1000 }}>
         <SignInButton
           nonce="abcd1234"
           requestId="some-unique-request-id"
           timeout={20000}
-          onSignInError={(error) => console.error("error callback:", error)}
-          onSignIn={(data) => console.log("success callback:", data)}
-          onSignOut={() => console.log("sign out callback")}
+          onSignInError={(error) => console.error('error callback:', error)}
+          onSignIn={(data) => console.log('success callback:', data)}
+          onSignOut={() => console.log('sign out callback')}
         />
       </div>
       <UserProfile />
     </AuthKitProvider>
-  );
+  )
 }
 
 function UserProfile() {
-  const profile = useProfile();
+  const profile = useProfile()
 
   return (
-    <div style={{ fontFamily: "sans-serif" }}>
+    <div style={{ fontFamily: 'sans-serif' }}>
       {profile?.isAuthenticated && (
         <div>
           {profile.fid && (
@@ -58,5 +58,5 @@ function UserProfile() {
         </div>
       )}
     </div>
-  );
+  )
 }

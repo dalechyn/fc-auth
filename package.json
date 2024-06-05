@@ -12,9 +12,9 @@
     "lint": "biome check .",
     "preconstruct": "node --import tsx .scripts/preconstruct.ts",
     "prepare": "husky install",
-    "version-packages": "changeset version",
-    "release-packages": "pnpm build && changeset publish",
-    "release-all": "pnpm build && changeset publish && changeset tag"
+    "changeset": "changeset",
+    "changeset:release": "pnpm build && changeset publish",
+    "changeset:version": "changeset version && pnpm install --lockfile-only"
   },
   "engines": {
     "npm": ">=8.0.0",
@@ -24,7 +24,7 @@
     "*.ts": ["biome check"]
   },
   "devDependencies": {
-    "@biomejs/biome": "~1.1.2",
+    "@biomejs/biome": "~1.8.0",
     "@changesets/changelog-github": "0.4.6",
     "@changesets/cli": "2.25.2",
     "@swc/cli": "^0.1.65",
@@ -32,6 +32,7 @@
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
+    "fast-glob": "^3.3.2",
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.2",

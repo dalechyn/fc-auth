@@ -1,20 +1,22 @@
-"use client";
+'use client'
 
-import { createContext, type ReactNode } from "react";
-import { type Config } from "../../types/config.js";
+import { type ReactNode, createContext } from 'react'
+import type { Config } from '../../types/config.js'
 
 export interface AuthKitConfigContextValues {
-  config: Config;
+  config: Config
 }
 
-export const AuthKitContext = createContext<AuthKitConfigContextValues | null>(null);
+export const AuthKitContext = createContext<AuthKitConfigContextValues | null>(
+  null,
+)
 
 export function AuthKitProvider({
   config,
   children,
 }: {
-  config: Config;
-  children: ReactNode;
+  config: Config
+  children: ReactNode
 }) {
   return (
     <AuthKitContext.Provider
@@ -24,5 +26,5 @@ export function AuthKitProvider({
     >
       {children}
     </AuthKitContext.Provider>
-  );
+  )
 }

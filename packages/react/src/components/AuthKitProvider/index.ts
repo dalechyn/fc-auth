@@ -1,2 +1,2 @@
-export { AuthKitProvider } from "./AuthKitProvider.js";
-export { createConfig } from "./config.js";
+export { AuthKitProvider } from './AuthKitProvider.js'
+export { createConfig } from './config.js'

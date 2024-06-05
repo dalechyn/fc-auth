@@ -1,1 +1,1 @@
-export * from "../contracts/idRegistry.js";
+export * from '../contracts/idRegistry.js'

@@ -1,28 +1,28 @@
-import { type Client } from "../createClient.js";
-import { AuthClientError } from "../../errors.js";
+import { AuthClientError } from '../../errors.js'
+import type { Client } from '../createClient.js'
 
 export interface HttpOpts {
-  channelToken?: string;
-  headers?: Record<string, string>;
+  channelToken?: string
+  headers?: Record<string, string>
 }
 
 export interface PollOpts<BodyType> {
-  interval?: number;
-  timeout?: number;
-  conditionToReturn?: (data: BodyType) => boolean;
+  interval?: number
+  timeout?: number
+  conditionToReturn?: (data: BodyType) => boolean
 }
 
 export interface HttpResponse<ResponseDataType> {
-  response: Response;
-  data: ResponseDataType;
+  response: Response
+  data: ResponseDataType
 }
 
-export type AsyncHttpResponse<T> = Promise<HttpResponse<T>>;
+export type AsyncHttpResponse<T> = Promise<HttpResponse<T>>
 
 const defaultPollOpts = {
   interval: 1000,
   timeout: 10000,
-};
+}
 
 export const get = async <ResponseDataType>(
   client: Client,
@@ -32,17 +32,17 @@ export const get = async <ResponseDataType>(
   try {
     const response = await fetch(getURI(client, path), {
       headers: getHeaders(opts),
-    });
+    })
 
     if (!response.ok) {
-      throw new AuthClientError("unknown", new Error(response.statusText));
+      throw new AuthClientError('unknown', new Error(response.statusText))
     }
 
-    return await response.json();
+    return await response.json()
   } catch (error) {
-    throw new AuthClientError("unknown", error as Error);
+    throw new AuthClientError('unknown', error as Error)
   }
-};
+}
 
 export const post = async <BodyType, ResponseDataType>(
   client: Client,
@@ -52,20 +52,20 @@ export const post = async <BodyType, ResponseDataType>(
 ): Promise<ResponseDataType> => {
   try {
     const response = await fetch(getURI(client, path), {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(parameters),
       headers: getHeaders(opts),
-    });
+    })
 
     if (!response.ok) {
-      throw new AuthClientError("unknown", new Error(response.statusText));
+      throw new AuthClientError('unknown', new Error(response.statusText))
     }
 
-    return await response.json();
+    return await response.json()
   } catch (error) {
-    throw new AuthClientError("unknown", error as Error);
+    throw new AuthClientError('unknown', error as Error)
   }
-};
+}
 
 export async function* poll<ResponseDataType>(
   client: Client,
@@ -76,29 +76,32 @@ export async function* poll<ResponseDataType>(
   const { timeout, interval } = {
     ...defaultPollOpts,
     ...pollOpts,
-  };
+  }
 
-  const deadline = Date.now() + timeout;
+  const deadline = Date.now() + timeout
 
   while (Date.now() < deadline) {
-    const data = await get<ResponseDataType>(client, path, opts);
-    if (pollOpts?.conditionToReturn?.(data)) return data;
-    yield data;
-    await new Promise((resolve) => setTimeout(resolve, interval));
+    const data = await get<ResponseDataType>(client, path, opts)
+    if (pollOpts?.conditionToReturn?.(data)) return data
+    yield data
+    await new Promise((resolve) => setTimeout(resolve, interval))
   }
-  throw new AuthClientError("unavailable", `Polling timed out after ${timeout}ms`);
+  throw new AuthClientError(
+    'unavailable',
+    `Polling timed out after ${timeout}ms`,
+  )
 }
 
 const getURI = (client: Client, path: string) => {
-  return `${client.config.relay}/${client.config.version}/${path}`;
-};
+  return `${client.config.relay}/${client.config.version}/${path}`
+}
 
 const getHeaders = (opts?: HttpOpts) => {
   const headers = {
     ...opts?.headers,
-  };
-  if (opts?.channelToken) {
-    headers["Authorization"] = `Bearer ${opts.channelToken}`;
   }
-  return { ...headers, "Content-Type": "application/json" };
-};
+  if (opts?.channelToken) {
+    headers.Authorization = `Bearer ${opts.channelToken}`
+  }
+  return { ...headers, 'Content-Type': 'application/json' }
+}

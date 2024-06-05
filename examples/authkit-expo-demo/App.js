@@ -1,10 +1,10 @@
 // polyfill TextEncoder
-import 'fastestsmallesttextencoderdecoder';
+import 'fastestsmallesttextencoderdecoder'
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Linking } from 'react-native';
-import { AuthKitProvider, useSignIn } from '@fc-auth/react';
-import { useEffect, useCallback } from 'react';
+import { AuthKitProvider, useSignIn } from '@fc-auth/react'
+import { StatusBar } from 'expo-status-bar'
+import { useCallback, useEffect } from 'react'
+import { Button, Linking, StyleSheet, Text, View } from 'react-native'
 
 const config = {
   rpcUrl: 'https://mainnet.optimism.io',
@@ -12,7 +12,7 @@ const config = {
   siweUri: 'https://example.com/login',
   relay: 'http://localhost:8000',
   redirectUrl: 'exp://192.168.0.168:8081',
-};
+}
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
       <Content />
       <StatusBar style="auto" />
     </AuthKitProvider>
-  );
+  )
 }
 
 function Content() {
@@ -33,42 +33,45 @@ function Content() {
     reconnect,
     channelToken,
     data,
-    validSignature
-  } = useSignIn();
+    validSignature,
+  } = useSignIn()
 
   const onClick = useCallback(() => {
     if (isError) {
-      reconnect();
+      reconnect()
     }
-    signIn();
+    signIn()
 
     if (url) {
-      Linking.openURL(url);
+      Linking.openURL(url)
     }
-  }, [isError, reconnect, signIn, url]);
+  }, [isError, reconnect, signIn, url])
 
   useEffect(() => {
     if (!channelToken) {
-      connect();
+      connect()
     }
-  }, [channelToken, connect]);
+  }, [channelToken, connect])
 
-  const authenticated = isSuccess && validSignature;
+  const authenticated = isSuccess && validSignature
 
   return (
     <View style={styles.container}>
-      {authenticated ?
+      {authenticated ? (
         <View>
           <Text>Signed in!</Text>
           <Text>{data?.username}</Text>
-        </View> :
-        <View>
-          <Button onPress={onClick} title="Sign in">Sign in</Button>
         </View>
-      }
+      ) : (
+        <View>
+          <Button onPress={onClick} title="Sign in">
+            Sign in
+          </Button>
+        </View>
+      )}
       <StatusBar style="auto" />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -78,4 +81,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})

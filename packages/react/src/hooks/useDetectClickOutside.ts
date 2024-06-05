@@ -1,19 +1,22 @@
-"use client";
+'use client'
 
-import { type RefObject, useEffect } from "react";
+import { type RefObject, useEffect } from 'react'
 
-export function useDetectClickOutside<T extends HTMLElement>(ref: RefObject<T>, callback: () => void) {
+export function useDetectClickOutside<T extends HTMLElement>(
+  ref: RefObject<T>,
+  callback: () => void,
+) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        callback();
+        callback()
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref, callback]);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [ref, callback])
 }
 
-export default useDetectClickOutside;
+export default useDetectClickOutside

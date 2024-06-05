@@ -1,61 +1,61 @@
-import { createClient, type Client } from "./createClient.js";
-import { viemConnector } from "./ethereum/viemConnector.js";
+import { type Client, createClient } from './createClient.js'
+import { viemConnector } from './ethereum/viemConnector.js'
 
-describe("createClient", () => {
-  const ethereum = viemConnector();
+describe('createClient', () => {
+  const ethereum = viemConnector()
   const config = {
     ethereum,
-  };
+  }
 
-  let client: Client;
+  let client: Client
 
   beforeEach(() => {
-    client = createClient(config);
-  });
+    client = createClient(config)
+  })
 
-  test("adds defaults to config", () => {
+  test('adds defaults to config', () => {
     expect(client.config).toEqual({
-      relay: "https://relay.farcaster.xyz",
-      version: "v1",
-    });
-  });
+      relay: 'https://relay.farcaster.xyz',
+      version: 'v1',
+    })
+  })
 
-  test("overrides version", () => {
+  test('overrides version', () => {
     client = createClient({
       ...config,
-      version: "v2",
-    });
+      version: 'v2',
+    })
 
     expect(client.config).toEqual({
-      relay: "https://relay.farcaster.xyz",
-      version: "v2",
-    });
-  });
+      relay: 'https://relay.farcaster.xyz',
+      version: 'v2',
+    })
+  })
 
-  test("overrides relay", () => {
+  test('overrides relay', () => {
     client = createClient({
       ...config,
-      relay: "https://custom-server.example.com",
-    });
+      relay: 'https://custom-server.example.com',
+    })
 
     expect(client.config).toEqual({
-      relay: "https://custom-server.example.com",
-      version: "v1",
-    });
-  });
+      relay: 'https://custom-server.example.com',
+      version: 'v1',
+    })
+  })
 
-  test("includes no actions", () => {
+  test('includes no actions', () => {
     client = createClient({
       ...config,
-      version: "v2",
-    });
+      version: 'v2',
+    })
 
     expect(client).toEqual({
       config: {
-        relay: "https://relay.farcaster.xyz",
-        version: "v2",
+        relay: 'https://relay.farcaster.xyz',
+        version: 'v2',
       },
       ethereum,
-    });
-  });
-});
+    })
+  })
+})

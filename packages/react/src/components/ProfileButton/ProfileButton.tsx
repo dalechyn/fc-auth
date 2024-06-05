@@ -1,15 +1,19 @@
-"use client";
+'use client'
 
-import { useRef, useState } from "react";
-import { secondaryButton } from "../styles.css.js";
-import useDetectClickOutside from "../../hooks/useDetectClickOutside.js";
-import { profileButtonContainer, profileImage, profileName } from "./ProfileButton.css.js";
-import { SignOutButton } from "../SignOutButton/index.js";
+import { useRef, useState } from 'react'
+import useDetectClickOutside from '../../hooks/useDetectClickOutside.js'
+import { SignOutButton } from '../SignOutButton/index.js'
+import { secondaryButton } from '../styles.css.js'
+import {
+  profileButtonContainer,
+  profileImage,
+  profileName,
+} from './ProfileButton.css.js'
 
 interface UserDataProps {
-  fid?: number;
-  pfpUrl?: string;
-  username?: string;
+  fid?: number
+  pfpUrl?: string
+  username?: string
 }
 
 export function ProfileButton({
@@ -17,33 +21,46 @@ export function ProfileButton({
   signOut,
   hideSignOut,
 }: {
-  userData?: UserDataProps;
-  signOut?: () => void;
-  hideSignOut: boolean;
+  userData?: UserDataProps
+  signOut?: () => void
+  hideSignOut: boolean
 }) {
-  const [showSignOutButton, setShowSignOutButton] = useState(false);
-  const ref = useRef(null);
-  useDetectClickOutside(ref, () => setShowSignOutButton(false));
+  const [showSignOutButton, setShowSignOutButton] = useState(false)
+  const ref = useRef(null)
+  useDetectClickOutside(ref, () => setShowSignOutButton(false))
 
-  const name = userData?.username ?? `!${userData?.fid}`;
-  const pfpUrl = userData?.pfpUrl ?? "https://warpcast.com/avatar.png";
+  const name = userData?.username ?? `!${userData?.fid}`
+  const pfpUrl = userData?.pfpUrl ?? 'https://warpcast.com/avatar.png'
 
-  const showSignOut = showSignOutButton && !hideSignOut;
+  const showSignOut = showSignOutButton && !hideSignOut
 
   return (
-    <div className={`fc-authkit-profile-button ${profileButtonContainer}`} ref={ref}>
+    <div
+      className={`fc-authkit-profile-button ${profileButtonContainer}`}
+      ref={ref}
+    >
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
         }}
       >
-        <button type="button" className={secondaryButton} onClick={() => setShowSignOutButton(!showSignOutButton)}>
+        <button
+          type="button"
+          className={secondaryButton}
+          onClick={() => setShowSignOutButton(!showSignOutButton)}
+        >
           <img className={profileImage} src={pfpUrl} alt="avatar" />
           <span className={profileName}>{name}</span>
           {!hideSignOut && (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <title>Dropdown</title>
               <g opacity="0.5">
                 <path
@@ -59,5 +76,5 @@ export function ProfileButton({
         {showSignOut && <SignOutButton signOut={signOut} />}
       </div>
     </div>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { type Hex } from "viem";
+import type { Hex } from 'viem'
 
 export interface EthereumConnector {
-  getFid: (custody: Hex) => Promise<bigint>;
+  getFid: (custody: Hex) => Promise<bigint>
 }

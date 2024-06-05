@@ -1,17 +1,19 @@
-import { createMiddleware } from "hono/factory";
+import { createMiddleware } from 'hono/factory'
 
 export type AuthVariables = {
-  channelToken: string;
-};
+  channelToken: string
+}
 
-export const auth = createMiddleware<{ Variables: AuthVariables }>(async (c, next) => {
-  const auth = c.req.header("authorization");
+export const auth = createMiddleware<{ Variables: AuthVariables }>(
+  async (c, next) => {
+    const auth = c.req.header('authorization')
 
-  const channelToken = auth?.split(" ")[1];
-  if (!channelToken) {
-    c.status(401);
-    return c.json({ error: "Unauthorized" });
-  }
-  c.set("channelToken", channelToken);
-  return next();
-});
+    const channelToken = auth?.split(' ')[1]
+    if (!channelToken) {
+      c.status(401)
+      return c.json({ error: 'Unauthorized' })
+    }
+    c.set('channelToken', channelToken)
+    return next()
+  },
+)
