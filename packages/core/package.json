@@ -64,21 +64,11 @@
   },
   "typesVersions": {
     "*": {
-      "actions": [
-        "./dist/types/exports/actions.d.ts"
-      ],
-      "clients": [
-        "./dist/types/exports/clients.d.ts"
-      ],
-      "contracts": [
-        "./dist/types/exports/contracts.d.ts"
-      ],
-      "errors": [
-        "./dist/types/exports/errors.d.ts"
-      ],
-      "utils": [
-        "./dist/types/exports/utils.d.ts"
-      ]
+      "actions": ["./dist/types/exports/actions.d.ts"],
+      "clients": ["./dist/types/exports/clients.d.ts"],
+      "contracts": ["./dist/types/exports/contracts.d.ts"],
+      "errors": ["./dist/types/exports/errors.d.ts"],
+      "utils": ["./dist/types/exports/utils.d.ts"]
     }
   },
   "dependencies": {
