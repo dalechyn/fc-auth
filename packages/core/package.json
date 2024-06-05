@@ -64,18 +64,28 @@
   },
   "typesVersions": {
     "*": {
-      "actions": ["./dist/types/exports/actions.d.ts"],
-      "clients": ["./dist/types/exports/clients.d.ts"],
-      "contracts": ["./dist/types/exports/contracts.d.ts"],
-      "errors": ["./dist/types/exports/errors.d.ts"],
-      "utils": ["./dist/types/exports/utils.d.ts"]
+      "actions": [
+        "./dist/types/exports/actions.d.ts"
+      ],
+      "clients": [
+        "./dist/types/exports/clients.d.ts"
+      ],
+      "contracts": [
+        "./dist/types/exports/contracts.d.ts"
+      ],
+      "errors": [
+        "./dist/types/exports/errors.d.ts"
+      ],
+      "utils": [
+        "./dist/types/exports/utils.d.ts"
+      ]
     }
   },
   "dependencies": {
     "@fc-auth/relay": "workspace:*",
-    "ethers": "^6.11.1",
-    "neverthrow": "^6.1.0",
-    "siwe": "^2.1.4"
+    "ethers": "^6.12.1",
+    "neverthrow": "^6.2.1",
+    "siwe": "^2.3.2"
   },
   "peerDependencies": {
     "viem": "1.x || 2.x"
@@ -83,5 +93,11 @@
   "devDependencies": {
     "viem": "^1.21.4"
   },
-  "keywords": ["farcaster", "sign-in", "sign-in with farcaster", "siwe", "auth-client"]
+  "keywords": [
+    "farcaster",
+    "sign-in",
+    "sign-in with farcaster",
+    "siwe",
+    "auth-client"
+  ]
 }
