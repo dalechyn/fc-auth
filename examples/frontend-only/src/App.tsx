@@ -4,7 +4,7 @@ import {
   createConfig,
   useProfile,
 } from '@fc-auth/react'
-import '@fc-auth/react/styles.css'
+import '@fc-auth/react/style.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { JsonRpcProvider } from 'ethers'
 

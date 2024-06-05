@@ -1,4 +1,4 @@
-import '@fc-auth/react/styles.css'
+import '@fc-auth/react/style.css'
 
 import {
   AuthKitProvider,
