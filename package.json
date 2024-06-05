@@ -8,6 +8,7 @@
     "dev": "turbo run dev --parallel",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci -- --passWithNoTests",
+    "typecheck": "turbo run typecheck",
     "format": "biome format . --write",
     "lint": "biome check .",
     "preconstruct": "node --import tsx .scripts/preconstruct.ts",

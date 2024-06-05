@@ -19,6 +19,9 @@
     "lint:ci": {
       "outputs": []
     },
+    "typecheck": {
+      "outputs": []
+    },
     "protoc": {
       "outputs": []
     },

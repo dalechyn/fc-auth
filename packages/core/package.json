@@ -78,10 +78,11 @@
     "siwe": "^2.3.2"
   },
   "peerDependencies": {
-    "viem": "1.x || 2.x"
+    "viem": "2.x"
   },
   "devDependencies": {
-    "viem": "^1.21.4"
+    "@jest/globals": "^29.7.0",
+    "viem": "^2.13.6"
   },
   "keywords": [
     "farcaster",
