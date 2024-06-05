@@ -1,5 +1,11 @@
 # @fc-auth/react
 
+## 0.0.2
+
+### Patch Changes
+
+- [`cfd8dc7`](https://github.com/dalechyn/fc-auth/commit/cfd8dc7a0253f7da57fbeb8212e0141a9fa5222d) Thanks [@dalechyn](https://github.com/dalechyn)! - Fixed an issue with wrong styles export.
+
 ## 0.0.1
 
 ### Patch Changes
