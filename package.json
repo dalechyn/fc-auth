@@ -1,6 +1,5 @@
 {
   "description": "A monorepo for Farcaster Auth",
-  "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@8.10.5",
   "scripts": {

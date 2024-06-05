@@ -1,0 +1,22 @@
+name: "Install dependencies"
+description: "Prepare repository and all dependencies"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        cache: pnpm
+        node-version: 20
+
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install
