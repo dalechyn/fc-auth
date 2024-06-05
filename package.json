@@ -27,7 +27,7 @@
   "devDependencies": {
     "@biomejs/biome": "~1.1.2",
     "@changesets/changelog-git": "^0.2.0",
-    "@changesets/cli": "^2.27.3",
+    "@changesets/cli": "^2.27.5",
     "@swc/cli": "^0.1.65",
     "@swc/core": "^1.5.7",
     "@swc/jest": "^0.2.36",
