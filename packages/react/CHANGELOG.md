@@ -1,5 +1,11 @@
 # @fc-auth/react
 
+## 0.0.3
+
+### Patch Changes
+
+- [`bb8c782`](https://github.com/dalechyn/fc-auth/commit/bb8c782ddf1bd30dbf15f2650f9de84a2b2d43a3) Thanks [@dalechyn](https://github.com/dalechyn)! - Implemented necessary changes from https://github.com/farcasterxyz/auth-monorepo/commit/951a6925b9aa4d3ed2e1f48690f42620e9793c21.
+
 ## 0.0.2
 
 ### Patch Changes
