@@ -3,7 +3,7 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "dependsOn": ["@fc-auth/core#build"],
+      "dependsOn": ["@fc-auth/core#build", "@fc-auth/react#build"],
       "inputs": [
         "src/**",
         "vite.config.ts",

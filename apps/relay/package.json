@@ -41,6 +41,8 @@
     "dotenv": "^16.4.5",
     "ethers": "^6.12.1",
     "fastify": "^4.27.0",
+    "hono": "^4.4.3",
+    "hono-rate-limiter": "^0.3.0",
     "ioredis": "^5.4.1",
     "siwe": "^2.3.2",
     "undici": "^6.18.0",

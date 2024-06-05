@@ -21,6 +21,7 @@ const { baseUrl, authKey } = getConfig()
 
 export const channel = new Hono().use(
   rateLimiter({
+    keyGenerator: () => crypto.randomUUID(),
     limit: 1000,
   }),
   channelMiddleware,

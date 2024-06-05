@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fc-auth/core": "workspace:*",
     "@fc-auth/react": "workspace:*",
     "@tanstack/react-query": "^5.37.1",
     "ethers": "^6.12.1",
