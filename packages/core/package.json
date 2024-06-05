@@ -1,7 +1,7 @@
 {
   "name": "@fc-auth/core",
   "description": "A framework agnostic client library for Farcaster Auth.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -64,11 +64,21 @@
   },
   "typesVersions": {
     "*": {
-      "actions": ["./dist/types/exports/actions.d.ts"],
-      "clients": ["./dist/types/exports/clients.d.ts"],
-      "contracts": ["./dist/types/exports/contracts.d.ts"],
-      "errors": ["./dist/types/exports/errors.d.ts"],
-      "utils": ["./dist/types/exports/utils.d.ts"]
+      "actions": [
+        "./dist/types/exports/actions.d.ts"
+      ],
+      "clients": [
+        "./dist/types/exports/clients.d.ts"
+      ],
+      "contracts": [
+        "./dist/types/exports/contracts.d.ts"
+      ],
+      "errors": [
+        "./dist/types/exports/errors.d.ts"
+      ],
+      "utils": [
+        "./dist/types/exports/utils.d.ts"
+      ]
     }
   },
   "dependencies": {

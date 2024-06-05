@@ -1,7 +1,7 @@
 {
   "name": "@fc-auth/relay",
   "description": "Farcaster Auth relay server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
