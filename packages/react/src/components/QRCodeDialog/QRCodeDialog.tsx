@@ -71,9 +71,9 @@ export function QRCodeDialog(
               >
                 <QRCode
                   uri={props.url}
-                  size={264}
-                  logoSize={22}
-                  logoMargin={12}
+                  size={300}
+                  logoSize={28}
+                  logoMargin={16}
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
