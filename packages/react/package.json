@@ -46,7 +46,7 @@
       "types": "./dist/exports/hooks.d.ts",
       "default": "./dist/exports/hooks.js"
     },
-    "./styles.css": "./dist/style.css"
+    "./style.css": "./dist/style.css"
   },
   "dependencies": {
     "@fc-auth/core": "workspace:*",
