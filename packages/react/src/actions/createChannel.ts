@@ -8,8 +8,10 @@ import type { Omit } from '../types/utils.js'
 
 export type CreateChannelParameters = Omit<
   client_CreateChannelParameters,
-  'nonce'
+  'nonce' | 'siweUri' | 'domain'
 > & {
+  siweUri?: string
+  domain?: string
   nonce?: string | (() => Promise<string>)
 }
 

@@ -72,12 +72,7 @@ export function SignInButton({
     reset,
   } = useSignIn()
 
-  const {
-    data: createChannelData,
-    status: createChannelDataChannel,
-    error: createChannelError,
-    refetch: recreateChannel,
-  } = useCreateChannel(signInArgs)
+  const createChannel = useCreateChannel()
 
   useEffect(() => {
     if (signInStatus === 'success') onSignIn?.(signInData)
@@ -89,7 +84,8 @@ export function SignInButton({
         signInError.message.startsWith('Polling timed out after')
       ) {
         ;(async () => {
-          const { data: recreateChannelData } = await recreateChannel()
+          const recreateChannelData =
+            await createChannel.mutateAsync(signInArgs)
           if (recreateChannelData?.channelToken) {
             reset()
             signIn({
@@ -104,23 +100,23 @@ export function SignInButton({
       onSignInError?.(signInError)
     }
   }, [
+    createChannel,
     signInStatus,
     onSignIn,
     signInData,
     signInError,
     onSignInError,
-    recreateChannel,
     reset,
     signIn,
     signInArgs,
   ])
 
-  const handleSignOut = useCallback(() => {
+  const handleSignOut = useCallback(async () => {
     setShowDialog(false)
     signOut()
-    recreateChannel()
+    await createChannel.mutateAsync(signInArgs)
     onSignOut?.()
-  }, [signOut, recreateChannel, onSignOut])
+  }, [signOut, signInArgs, createChannel, onSignOut])
 
   const [showDialog, setShowDialog] = useState(false)
 
@@ -130,12 +126,12 @@ export function SignInButton({
     }
     setShowDialog(true)
 
-    if (!createChannelData) throw new Error('Missing `createChannelData`')
+    const createChannelData = await createChannel.mutateAsync(signInArgs)
     signIn({ ...signInArgs, channelToken: createChannelData.channelToken })
     if (isMobile()) {
       window.location.href = createChannelData.url
     }
-  }, [signInStatus, signIn, createChannelData, signInArgs, signOut])
+  }, [signInStatus, signIn, createChannel, signInArgs, signOut])
 
   return (
     <div className="fc-authkit-signin-button">
@@ -148,23 +144,23 @@ export function SignInButton({
       ) : (
         <>
           <ActionButton
-            disabled={createChannelDataChannel !== 'success'}
             onClick={onClick}
-            label="Sign in"
+            disabled={createChannel.status === 'pending'}
+            label={createChannel.status === 'pending' ? 'Loading' : 'Sign in'}
           />
-          {createChannelDataChannel === 'success' ? (
+          {createChannel.status === 'success' ? (
             <QRCodeDialog
               variant="success"
               open={showDialog && !isMobile()}
               onClose={() => setShowDialog(false)}
-              url={createChannelData.url}
+              url={createChannel.data.url}
             />
-          ) : createChannelDataChannel === 'error' ? (
+          ) : createChannel.status === 'error' ? (
             <QRCodeDialog
               variant="error"
               open={showDialog && !isMobile()}
               onClose={() => setShowDialog(false)}
-              error={createChannelError}
+              error={createChannel.error}
             />
           ) : null}
         </>

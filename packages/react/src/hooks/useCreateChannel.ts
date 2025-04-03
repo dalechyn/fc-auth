@@ -1,49 +1,30 @@
 'use client'
 
-import type { CreateChannelErrorType } from '../actions/createChannel.js'
+import { type UseMutationResult, useMutation } from '@tanstack/react-query'
 import {
-  type CreateChannelData,
-  type CreateChannelOptions,
-  type CreateChannelQueryFnData,
-  type CreateChannelQueryKey,
-  createChannelQueryOptions,
-} from '../query/createChannel.js'
-import type { QueryParameter } from '../types/properties.js'
-import {
-  type UseQueryReturnType,
-  structuralSharing,
-  useQuery,
-} from '../types/query.js'
-import type { UnionEvaluate } from '../types/utils.js'
+  type CreateChannelErrorType,
+  type CreateChannelParameters,
+  type CreateChannelReturnType,
+  createChannel,
+} from '../actions/createChannel.js'
 import { useConfig } from './useConfig.js'
 
-export type UseCreateChannelParameters<selectData = CreateChannelData> =
-  UnionEvaluate<
-    CreateChannelOptions &
-      QueryParameter<
-        CreateChannelQueryFnData,
-        CreateChannelErrorType,
-        selectData,
-        CreateChannelQueryKey
-      >
-  >
-export type UseCreateChannelReturnType<selectData = CreateChannelData> =
-  UseQueryReturnType<selectData, CreateChannelErrorType>
+export type UseCreateChannelVariables = CreateChannelParameters
 
-export function useCreateChannel<selectData = CreateChannelData>(
-  parameters: UseCreateChannelParameters<selectData> = {},
-): UseCreateChannelReturnType<selectData> {
-  const { query = {} } = parameters
+export type UseCreateChannelReturnType = UseMutationResult<
+  CreateChannelReturnType,
+  CreateChannelErrorType,
+  UseCreateChannelVariables
+>
+
+export function useCreateChannel(): UseCreateChannelReturnType {
   const config = useConfig()
 
-  const options = createChannelQueryOptions(config, parameters)
-
-  const enabled = query.enabled ?? true
-
-  return useQuery({
-    ...query,
-    ...options,
-    enabled,
-    structuralSharing: query.structuralSharing ?? structuralSharing,
+  return useMutation<
+    CreateChannelReturnType,
+    CreateChannelErrorType,
+    UseCreateChannelVariables
+  >({
+    mutationFn: (variables) => createChannel(config, variables),
   })
 }
