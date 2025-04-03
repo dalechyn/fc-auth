@@ -1,30 +1,9 @@
 'use client'
 
-import QRCodeUtil from 'qrcode'
-import { type ReactElement, useMemo } from 'react'
+import { Cuer } from 'cuer'
 import { FarcasterLogo } from './FarcasterLogo.js'
-import { qrCode, qrCodeContainer, qrCodeWrapper } from './styles.css.js'
-
-const generateMatrix = (
-  value: string,
-  errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel,
-) => {
-  const arr = Array.prototype.slice.call(
-    QRCodeUtil.create(value, { errorCorrectionLevel }).modules.data,
-    0,
-  )
-  const sqrt = Math.sqrt(arr.length)
-  return arr.reduce(
-    (rows, key, index) =>
-      (index % sqrt === 0
-        ? rows.push([key])
-        : rows[rows.length - 1].push(key)) && rows,
-    [],
-  )
-}
 
 type Props = {
-  ecl?: QRCodeUtil.QRCodeErrorCorrectionLevel
   logoUrl?: string
   logoMargin?: number
   logoSize?: number
@@ -32,115 +11,17 @@ type Props = {
   uri: string
 }
 
-export function QRCode({
-  ecl = 'H',
-  logoMargin = 10,
-  logoSize = 50,
-  size: sizeProp = 200,
-  uri,
-}: Props) {
+export function QRCode({ logoSize = 50, size: sizeProp = 200, uri }: Props) {
   const padding = '20'
   const size = sizeProp - Number.parseInt(padding, 10) * 2
 
-  const squares = useMemo(() => {
-    const squares: ReactElement[] = []
-    const matrix = generateMatrix(uri, ecl)
-    const cellSize = size / matrix.length
-    const qrList = [
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
-      { x: 0, y: 1 },
-    ]
-
-    qrList.forEach(({ x, y }) => {
-      const x1 = (matrix.length - 7) * cellSize * x
-      const y1 = (matrix.length - 7) * cellSize * y
-      for (let i = 0; i < 3; i++) {
-        squares.push(
-          <rect
-            fill={i % 2 !== 0 ? 'white' : 'black'}
-            height={cellSize * (7 - i * 2)}
-            key={`${i}-${x}-${y}`}
-            rx={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
-            ry={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
-            width={cellSize * (7 - i * 2)}
-            x={x1 + cellSize * i}
-            y={y1 + cellSize * i}
-          />,
-        )
-      }
-    })
-
-    const clearArenaSize = Math.floor((logoSize + logoMargin * 2) / cellSize)
-    const matrixMiddleStart = matrix.length / 2 - clearArenaSize / 2
-    const matrixMiddleEnd = matrix.length / 2 + clearArenaSize / 2 - 1
-
-    matrix.forEach((row: QRCodeUtil.QRCode[], i: number) => {
-      row.forEach((_, j) => {
-        if (matrix[i][j]) {
-          if (
-            !(
-              (i < 7 && j < 7) ||
-              (i > matrix.length - 8 && j < 7) ||
-              (i < 7 && j > matrix.length - 8)
-            )
-          ) {
-            if (
-              !(
-                i > matrixMiddleStart &&
-                i < matrixMiddleEnd &&
-                j > matrixMiddleStart &&
-                j < matrixMiddleEnd
-              )
-            ) {
-              squares.push(
-                <rect
-                  fill="black"
-                  height={cellSize - 0.5}
-                  key={`square-${i}-${j}`}
-                  width={cellSize - 0.5}
-                  x={i * cellSize}
-                  y={j * cellSize}
-                />,
-              )
-            }
-          }
-        }
-      })
-    })
-
-    return squares
-  }, [ecl, logoSize, logoMargin, size, uri])
-
-  const logoPosition = size / 2 - logoSize / 2
-  const logoWrapperSize = logoSize + logoMargin * 2
-
   return (
-    <div className={qrCodeContainer}>
-      <div className={qrCodeWrapper}>
-        <div
-          className={qrCode}
-          style={{
-            top: logoPosition,
-            width: size,
-          }}
-        >
-          <FarcasterLogo fill="purple" height={logoSize} />
-        </div>
-        <svg height={size} style={{ all: 'revert' }} width={size}>
-          <title>QR Code</title>
-          <defs>
-            <clipPath id="clip-wrapper">
-              <rect height={logoWrapperSize} width={logoWrapperSize} />
-            </clipPath>
-            <clipPath id="clip-logo">
-              <rect height={logoSize} width={logoSize} />
-            </clipPath>
-          </defs>
-          <rect fill="transparent" height={size} width={size} />
-          {squares}
-        </svg>
-      </div>
-    </div>
+    <Cuer.Root value={uri} size={size}>
+      <Cuer.Cells radius={0} inset={false} />
+      <Cuer.Finder radius={0} />
+      <Cuer.Arena>
+        <FarcasterLogo fill="purple" height={logoSize} />
+      </Cuer.Arena>
+    </Cuer.Root>
   )
 }
